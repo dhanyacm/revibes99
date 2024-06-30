@@ -4,5 +4,5 @@ theme: jekyll-theme-cayman
 plugins:
   - jekyll-sitemap
 baseurl: "/revibes99"
-url: http://dhanyacm.github.io/
+url: https://dhanyacm.github.io/
 include: ["_pages"]
