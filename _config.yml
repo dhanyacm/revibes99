@@ -1,0 +1,8 @@
+name: revibes99
+markdown: kramdown
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-sitemap
+baseurl: "/revibes99"
+url: http://dhanyacm.github.io/
+include: ["_pages"]
