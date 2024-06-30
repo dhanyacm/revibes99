@@ -1,0 +1,246 @@
+---
+layout: default
+description: Check in Page
+title: Check In
+id: checkin
+frontpage: false
+---
+
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade" style="background-image: url(assets/img/page-title-bg.webp);">
+      <div class="container position-relative">
+        <h1>Check-in Page</h1>
+        <p>Event check-in for 'Class of 99' and invitees.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Check-in Page</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Starter Section Section -->
+    <section id="starter-section" class="starter-section section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Check In Section</h2>
+        <p> Class of 99 and Invitees check-in </p>
+      </div><!-- End Section Title -->
+ <div class="container" data-aos="fade-up">
+
+
+        <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item">
+            <a class="nav-link active" href="#day-1" role="tab" data-bs-toggle="tab">Class of 1999</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#day-2" role="tab" data-bs-toggle="tab">Invitees</a>
+          </li>
+        
+        </ul>
+        
+        <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+          <h3 class="sub-heading">Voluptatem nulla veniam soluta et corrupti consequatur neque eveniet officia. Eius necessitatibus voluptatem quis labore perspiciatis quia.</h3>
+
+          <!-- Schdule Day 1 -->
+          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+
+    <p>Search by Name/Regn ID</p>
+    <input type="text" id="searchInput" placeholder="Enter Name or Regn Number" />
+    <button onclick="searchExcel()">Search</button>
+    <div id="result"></div>
+
+    <script>
+        let workbook;
+        let currentRow;
+        let currentRowIndex;
+
+        // Load the Excel file when the page loads
+        window.onload = function() {
+            fetch('https://dhanyacm.com/assets/Revibes99-Mastersheet.xlsx')
+                .then(response => response.arrayBuffer())
+                .then(data => {
+                    workbook = XLSX.read(data, { type: 'array' });
+                });
+        };
+
+        function searchExcel() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+            const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // Find the column indices for "Regn Number" and "Name"
+            const headers = rows[0];
+            const regnNumberIndex = headers.indexOf("Regn Number");
+            const nameIndex = headers.indexOf("Name");
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            if (regnNumberIndex === -1 || nameIndex === -1) {
+                resultDiv.innerHTML = '<p>Columns "Regn Number" or "Name" not found in the sheet.</p>';
+                return;
+            }
+
+            let found = false;
+
+            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+                const row = rows[i];
+                if (
+                    (row[regnNumberIndex] && row[regnNumberIndex].toString().toLowerCase().includes(searchValue)) ||
+                    (row[nameIndex] && row[nameIndex].toString().toLowerCase().includes(searchValue))
+                ) {
+                    currentRow = row;
+                    currentRowIndex = i;
+
+                    const form = document.createElement('div');
+                    form.classList.add('result-form');
+                    
+                    const leftSection = document.createElement('div');
+                    leftSection.classList.add('result-section');
+                    
+                    const rightSection = document.createElement('div');
+                    rightSection.classList.add('result-section');
+
+                    const updateSection = document.createElement('div');
+                    updateSection.classList.add('update-section');
+
+                    headers.forEach((header, index) => {
+                        const item = document.createElement('div');
+                        item.classList.add('result-item');
+                        
+                        const label = document.createElement('label');
+                        label.textContent = header;
+
+                        let value;
+                        if (header === "Check In") {
+                            value = document.createElement('select');
+                            ["Not Done", "Done"].forEach(optionText => {
+                                const option = document.createElement('option');
+                                option.value = optionText;
+                                option.text = optionText;
+                                value.appendChild(option);
+                            });
+                            value.value = row[index] || 'Not Done';
+                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
+                            if (value.value === 'Done') {
+                                value.disabled = true;
+                            }
+                        } else if (["Welcome Kit", "Lunch Coupon", "Group Photo"].includes(header)) {
+                            value = document.createElement('select');
+                            ["Not Collected", "Collected"].forEach(optionText => {
+                                const option = document.createElement('option');
+                                option.value = optionText;
+                                option.text = optionText;
+                                value.appendChild(option);
+                            });
+                            value.value = row[index] || 'Not Collected';
+                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
+                        } else if (header === "Remarks on checkin") {
+                            value = document.createElement('input');
+                            value.type = 'text';
+                            value.value = row[index] || '';
+                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
+                        } else {
+                            value = document.createElement('div');
+                            value.textContent = row[index];
+                            if (["Guest Count", "T Shirt Size", "Addl T Shirts", "Lunch Coupon Count"].includes(header)) {
+                                value.classList.add('highlight');
+                            }
+                        }
+
+                        item.appendChild(label);
+                        item.appendChild(value);
+
+                        if (["Guest Count", "T Shirt Size", "Addl T Shirts", "Lunch Coupon Count"].includes(header)) {
+                            rightSection.appendChild(item);
+                        } else if (["Check In", "Welcome Kit", "Lunch Coupon", "Remarks on checkin", "Group Photo"].includes(header)) {
+                            updateSection.appendChild(item);
+                        } else {
+                            leftSection.appendChild(item);
+                        }
+                    });
+
+                    form.appendChild(leftSection);
+                    form.appendChild(rightSection);
+                    form.appendChild(updateSection);
+                    resultDiv.appendChild(form);
+
+                    // Add a check-in button
+                    const checkInButton = document.createElement('button');
+                    checkInButton.textContent = 'Check In';
+                    checkInButton.onclick = () => saveChanges(i, headers);
+                    resultDiv.appendChild(checkInButton);
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                resultDiv.innerHTML = '<p>No matching results found.</p>';
+            }
+        }
+
+        function saveChanges(rowIndex, headers) {
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+
+            headers.forEach((header, index) => {
+                if (["Check In", "Welcome Kit", "Lunch Coupon", "Remarks on checkin", "Group Photo"].includes(header)) {
+                    const input = document.getElementById(header.replace(/\s+/g, '') + rowIndex);
+                    if (input) {
+                        const cellAddress = XLSX.utils.encode_cell({ c: index, r: rowIndex });
+                        worksheet[cellAddress] = worksheet[cellAddress] || {};
+                        worksheet[cellAddress].v = input.value;
+
+                        // Disable fields if Check In is done
+                        if (header === "Check In" && input.value === 'Done') {
+                            document.querySelectorAll(`#result input, #result select`).forEach(el => {
+                                el.disabled = true;
+                            });
+                        }
+                    }
+                }
+            });
+
+            const updatedData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+            const blob = new Blob([updatedData], { type: 'application/octet-stream' });
+
+            const formData = new FormData();
+            formData.append('file', blob, 'Revibes99-Mastersheet.xlsx');
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+   </div> <!-- End Schdule Day 1 -->
+
+          <!-- Schdule Day 2 -->
+          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
+
+	</div> <!-- /Day 2 Section -->
+
+	</div> <!-- /Tab Section -->
+
+      </div>
+
+    </section> <!-- /Starter Section Section -->
+
+  </main>
