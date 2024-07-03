@@ -68,7 +68,7 @@ frontpage: false
     <button onclick="searchExcel()">Search</button>
     <div id="result"></div>
 
-    <script>
+       <script>
         let workbook;
         let currentRow;
         let currentRowIndex;
@@ -201,7 +201,7 @@ frontpage: false
             }
         }
 
-        <!-- function saveChanges(rowIndex, headers) {
+        function saveChanges(rowIndex, headers) {
             const sheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[sheetName];
 
@@ -223,24 +223,10 @@ frontpage: false
                 }
             });
 
-            const updatedData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-            const blob = new Blob([updatedData], { type: 'application/octet-stream' });
-
-            const formData = new FormData();
-            formData.append('file', blob, 'Revibes99-Mastersheet.xlsx');
-
-            fetch('/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        } -->
+            // implement saving the updated workbook back to the file or server.
+            // For example, using FileSaver.js to save locally:
+            // XLSX.writeFile(workbook, 'updated-file.xlsx');
+        }
     </script>
 
       </div> 
