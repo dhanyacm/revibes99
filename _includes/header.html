@@ -27,6 +27,44 @@
   <!-- Main CSS File -->
   <link href="{{site.baseurl}}/assets/css/main.css" rel="stylesheet">
 
+  <!-- for check-in -->
+  {% if page.id == "checkin" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+	 
+  <style>
+        .result-form {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .result-section {
+            display: grid;
+            gap: 10px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: red;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+        }
+        .result-item label {
+            font-weight: bold;
+            width: 150px;
+            margin-right: 10px;
+        }
+        .result-item div, .result-item input, .result-item select {
+            flex-grow: 1;
+        }
+        .update-section {
+            grid-column: span 2;
+            display: grid;
+            gap: 10px;
+        }
+    </style>	
+{% endif %}
 </head>
   
 <body class="index-page">
