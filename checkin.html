@@ -22,8 +22,8 @@ frontpage: false
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Starter Section Section -->
-    <section id="starter-section" class="starter-section section">
+    <!-- Check-in Section -->
+    <section id="checkin" class="schedule section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -31,86 +31,34 @@ frontpage: false
         <p> Class of 99 and Invitees check-in </p>
       </div><!-- End Section Title -->
 
-
-
-	      <!-- Schedule Section -->
-    <section id="schedule" class="schedule section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Event Schedule<br></h2>
-        <p>Planned Schedule of the Event</p>
-      </div><!-- End Section Title -->
-
       <div class="container">
 
         <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item">
-            <a class="nav-link active" href="#morning" role="tab" data-bs-toggle="tab">Morning</a>
+            <a class="nav-link active" href="#morning" role="tab" data-bs-toggle="tab">Class of 1999</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#afternoon" role="tab" data-bs-toggle="tab">Afternoon</a>
+            <a class="nav-link" href="#afternoon" role="tab" data-bs-toggle="tab">Invited Guests</a>
           </li>
         
         </ul>
 
         <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
-          <h3 class="sub-heading"> Event Schedule.</h3>
+          <h3 class="sub-heading">Check-in of pre-registered attendees.</h3>
 
           <!-- Schdule Morning -->
           <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="morning">
 
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>08:30 AM</time></div>
+            <div class="row schedule-item">       
               <div class="col-md-10">
-                <h4>Registration</h4>
-                <p>Each branch will have seperate check-in counters.</p>
+                <h4>Search by Name/Regn ID</h4>
+        	     <input type="text" id="searchInput" placeholder="Enter Name or Regn Number" />
+   		      <button onclick="searchExcel()">Search</button>
+                      <div id="result"></div>
               </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>09:30 AM</time></div>
-              <div class="col-md-10">
-                <h4>Parade &<span>Chendamelam</span></h4>
-                <p>Branchwise parade and chendamelam</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>10:00 AM</time></div>
-              <div class="col-md-10">
-                  <h4>Welcome & <span>Inaguration</span></h4>
-                  <p>Official Inaguration of the event</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>10:30 AM</time></div>
-              <div class="col-md-10">
-                 <h4>Felicitation of faculties &<span>Photoshoot</span></h4>
-                <p>Department wise felicitation of faculties along with department photoshoot.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>11:45 AM</time></div>
-              <div class="col-md-10">
-                <h4>Cultural <span>Programmes</span></h4>
-                <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>12:30 PM</time></div>
-              <div class="col-md-10">
-                <div class="speaker">
-                  <img src="assets/img/lunch.jpg" alt="lunch">
-                </div>
-                <h4>Lunch <span>Break</span></h4>
-              </div>
-            </div>
-
+	     </div>
+         
             </div><!-- End Morning -->
 
           <!-- Schdule Afternoon -->
@@ -124,29 +72,6 @@ frontpage: false
               </div>
             </div>
 
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>02:30 AM</time></div>
-              <div class="col-md-10">
-                <h4>Department <span>Visits</span></h4>
-                <p>Individual department visits</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>03:30 AM</time></div>
-              <div class="col-md-10">
-                <h4>Evening tea & <span>Group photo collection</span></h4>
-                <p>Collect the group photo taken in the morning with faculties.</p>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-2"><time>04:00 PM</time></div>
-              <div class="col-md-10">
-                <h4>Clean-up & <span>Disperse</span></h4>
-                <p>Head for evening event.</p>
-              </div>
-            </div>
 
          </div><!-- End Schdule Afternoon -->
           
@@ -155,207 +80,4 @@ frontpage: false
       </div>
     </section><!-- /Schedule Section -->
 
-
-
-  <div class="container">
-
-        <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
-          <li class="nav-item">
-            <a class="nav-link active" href="#1999" role="tab" data-bs-toggle="tab">Class of 1999</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#guests" role="tab" data-bs-toggle="tab">Invited Guests</a>
-          </li>
-        
-        </ul>
-
-        <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
-
-          <h3 class="sub-heading">Check-in of pre-registered attendees</h3>
-
-          <!-- Class of 1999 Registration -->
-          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="1999">
-	       </div><!-- End Schdule Day 1 -->
-
-          <!-- Guest Registration -->
-          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="guests">
-
-	   </div><!-- End Guests -->
-		
-	</div> <!-- /Tab Section -->
-
-      </div>
-	    
- <div class="container" data-aos="fade-up">
-      
-    <p>Search by Name/Regn ID</p>
-    <input type="text" id="searchInput" placeholder="Enter Name or Regn Number" />
-    <button onclick="searchExcel()">Search</button>
-    <div id="result"></div>
-
-       <script>
-        let workbook;
-        let currentRow;
-        let currentRowIndex;
-
-        // Load the Excel file when the page loads
-        window.onload = function() {
-            fetch('https://dhanyacm.com/assets/Revibes99-Mastersheet.xlsx')
-                .then(response => response.arrayBuffer())
-                .then(data => {
-                    workbook = XLSX.read(data, { type: 'array' });
-                });
-        };
-
-        function searchExcel() {
-            const searchValue = document.getElementById('searchInput').value.toLowerCase();
-            const sheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[sheetName];
-            const rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-
-            // Find the column indices for "Regn Number" and "Name"
-            const headers = rows[0];
-            const regnNumberIndex = headers.indexOf("Regn Number");
-            const nameIndex = headers.indexOf("Name");
-
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = ''; // Clear previous results
-
-            if (regnNumberIndex === -1 || nameIndex === -1) {
-                resultDiv.innerHTML = '<p>Columns "Regn Number" or "Name" not found in the sheet.</p>';
-                return;
-            }
-
-            let found = false;
-
-            for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header row
-                const row = rows[i];
-                if (
-                    (row[regnNumberIndex] && row[regnNumberIndex].toString().toLowerCase().includes(searchValue)) ||
-                    (row[nameIndex] && row[nameIndex].toString().toLowerCase().includes(searchValue))
-                ) {
-                    currentRow = row;
-                    currentRowIndex = i;
-
-                    const form = document.createElement('div');
-                    form.classList.add('result-form');
-                    
-                    const leftSection = document.createElement('div');
-                    leftSection.classList.add('result-section');
-                    
-                    const rightSection = document.createElement('div');
-                    rightSection.classList.add('result-section');
-
-                    const updateSection = document.createElement('div');
-                    updateSection.classList.add('update-section');
-
-                    headers.forEach((header, index) => {
-                        const item = document.createElement('div');
-                        item.classList.add('result-item');
-                        
-                        const label = document.createElement('label');
-                        label.textContent = header;
-
-                        let value;
-                        if (header === "Check In") {
-                            value = document.createElement('select');
-                            ["Not Done", "Done"].forEach(optionText => {
-                                const option = document.createElement('option');
-                                option.value = optionText;
-                                option.text = optionText;
-                                value.appendChild(option);
-                            });
-                            value.value = row[index] || 'Not Done';
-                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
-                            if (value.value === 'Done') {
-                                value.disabled = true;
-                            }
-                        } else if (["Welcome Kit", "Lunch Coupon", "Group Photo"].includes(header)) {
-                            value = document.createElement('select');
-                            ["Not Collected", "Collected"].forEach(optionText => {
-                                const option = document.createElement('option');
-                                option.value = optionText;
-                                option.text = optionText;
-                                value.appendChild(option);
-                            });
-                            value.value = row[index] || 'Not Collected';
-                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
-                        } else if (header === "Remarks on checkin") {
-                            value = document.createElement('input');
-                            value.type = 'text';
-                            value.value = row[index] || '';
-                            value.id = header.replace(/\s+/g, '') + i; // Unique ID for each input
-                        } else {
-                            value = document.createElement('div');
-                            value.textContent = row[index];
-                            if (["Guest Count", "T Shirt Size", "Addl T Shirts", "Lunch Coupon Count"].includes(header)) {
-                                value.classList.add('highlight');
-                            }
-                        }
-
-                        item.appendChild(label);
-                        item.appendChild(value);
-
-                        if (["Guest Count", "T Shirt Size", "Addl T Shirts", "Lunch Coupon Count"].includes(header)) {
-                            rightSection.appendChild(item);
-                        } else if (["Check In", "Welcome Kit", "Lunch Coupon", "Remarks on checkin", "Group Photo"].includes(header)) {
-                            updateSection.appendChild(item);
-                        } else {
-                            leftSection.appendChild(item);
-                        }
-                    });
-
-                    form.appendChild(leftSection);
-                    form.appendChild(rightSection);
-                    form.appendChild(updateSection);
-                    resultDiv.appendChild(form);
-
-                    // Add a check-in button
-                    const checkInButton = document.createElement('button');
-                    checkInButton.textContent = 'Check In';
-                    checkInButton.onclick = () => saveChanges(i, headers);
-                    resultDiv.appendChild(checkInButton);
-
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found) {
-                resultDiv.innerHTML = '<p>No matching results found.</p>';
-            }
-        }
-
-        function saveChanges(rowIndex, headers) {
-            const sheetName = workbook.SheetNames[0];
-            const worksheet = workbook.Sheets[sheetName];
-
-            headers.forEach((header, index) => {
-                if (["Check In", "Welcome Kit", "Lunch Coupon", "Remarks on checkin", "Group Photo"].includes(header)) {
-                    const input = document.getElementById(header.replace(/\s+/g, '') + rowIndex);
-                    if (input) {
-                        const cellAddress = XLSX.utils.encode_cell({ c: index, r: rowIndex });
-                        worksheet[cellAddress] = worksheet[cellAddress] || {};
-                        worksheet[cellAddress].v = input.value;
-
-                        // Disable fields if Check In is done
-                        if (header === "Check In" && input.value === 'Done') {
-                            document.querySelectorAll(`#result input, #result select`).forEach(el => {
-                                el.disabled = true;
-                            });
-                        }
-                    }
-                }
-            });
-
-            // implement saving the updated workbook back to the file or server.
-            // For example, using FileSaver.js to save locally:
-            // XLSX.writeFile(workbook, 'updated-file.xlsx');
-        }
-    </script>
-
-      </div> 
-
-    </section> <!-- /Starter Section Section -->
-
-  </main>
+ </main>
